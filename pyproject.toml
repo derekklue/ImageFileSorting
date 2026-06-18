@@ -1,0 +1,31 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "file-sorter"
+version = "0.1.0"
+description = "Vision model + vector DB for file similarity mapping and duplicate detection"
+requires-python = ">=3.10"
+dependencies = [
+    "chromadb>=0.5.0",
+    "sentence-transformers>=2.2.0",
+    "Pillow>=10.0.0",
+    "rich>=13.0.0",
+    "typer>=0.9.0",
+    "numpy>=1.24.0",
+    "scikit-learn>=1.3.0",
+    "pypdf>=4.0.0",
+    "python-docx>=1.1.0",
+]
+
+[project.optional-dependencies]
+video = ["opencv-python>=4.8.0"]
+audio = ["mutagen>=1.47.0"]
+visualize = ["umap-learn>=0.5.0", "plotly>=5.0.0"]
+
+[project.scripts]
+file-sorter = "file_sorter.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["file_sorter"]
